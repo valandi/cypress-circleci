@@ -17,7 +17,8 @@ jobs:
             echo $APPLITOOLS_PARENT_BRANCH
             echo $APPLITOOLS_API_KEY
             echo $CIRCLE_BRANCH
-            #curl -L -d '' -X POST "eyesapi.applitools.com/api/externals/github/push?apiKey=$APPLITOOLS_API_KEY&CommitSha=$CIRCLE_SHA1&BranchName=$CIRCLE_BRANCH&ParentBranchName=$APPLITOOLS_PARENT_BRANCH"
+            curl --request POST --dump-header --url "https://eyesapi.applitools.com/api/externals/github/push?/" apiKey=$APPLITOOLS_API_KEY&CommitSha=$CIRCLE_SHA1&BranchName=$APPLITOOL
+
       - run:
           name: Set environnment variable and run test
           command: | 
