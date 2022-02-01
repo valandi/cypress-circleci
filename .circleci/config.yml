@@ -14,9 +14,13 @@ jobs:
           name: Prepare for commit push - Temporarily not needed; only want integration on PR
           command: |
             export APPLITOOLS_PARENT_BRANCH=main
+            export APPLITOOLS_BATCH_ID=${CIRCLE_SHA1}
+
             echo $APPLITOOLS_PARENT_BRANCH
             echo $APPLITOOLS_API_KEY
             echo $CIRCLE_BRANCH
+            echo ${APPLITOOLS_BATCH_ID}
+            
             curl --request POST --dump-header --url "https://eyesapi.applitools.com/api/externals/github/push?/" apiKey=$APPLITOOLS_API_KEY&CommitSha=$CIRCLE_SHA1&BranchName=$APPLITOOL
 
       - run:
