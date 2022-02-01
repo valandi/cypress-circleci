@@ -9,7 +9,7 @@ describe("AppTest", () => {
 
         console.log("new feature");
         console.log("newest feature");
-        
+        console.log("newerererererr feature");
         // Call Open on eyes to initialize a test session
         cy.eyesOpen({
             appName: 'Demo App - Cypress',
