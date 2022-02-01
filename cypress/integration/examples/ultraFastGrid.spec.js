@@ -8,7 +8,8 @@ describe("AppTest", () => {
         cy.visit('https://demo.applitools.com');
 
         console.log("new feature");
-        
+        console.log("newest feature");
+        console.log("newerererererr feature");
         // Call Open on eyes to initialize a test session
         cy.eyesOpen({
             appName: 'Demo App - Cypress',
