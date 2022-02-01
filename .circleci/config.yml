@@ -1,0 +1,26 @@
+jobs:
+  build:
+    docker:
+      - image: circleci/node:16.13.1
+      
+    working_directory: ~/repo
+    
+    steps:
+      - checkout:
+      - run: printenv
+      - run:
+          command: npm install
+      - run:
+          name: Prepare for commit push - Temporarily not needed; only want integration on PR
+          command: |
+            export APPLITOOLS_PARENT_BRANCH=main
+            echo $APPLITOOLS_PARENT_BRANCH
+            echo $APPLITOOLS_API_KEY
+            echo $CIRCLE_BRANCH
+            #curl -L -d '' -X POST "eyesapi.applitools.com/api/externals/github/push?apiKey=$APPLITOOLS_API_KEY&CommitSha=$CIRCLE_SHA1&BranchName=$CIRCLE_BRANCH&ParentBranchName=$APPLITOOLS_PARENT_BRANCH"
+      - run:
+          name: Set environnment variable and run test
+          command: | 
+            export APPLITOOLS_BATCH_ID=${CIRCLE_SHA1}
+            echo ${APPLITOOLS_BATCH_ID}
+            npm test
