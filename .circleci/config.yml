@@ -2,9 +2,6 @@ jobs:
   build:
     docker:
       - image: cypress/base:14.16.0
-      
-    working_directory: ~/repo
-    
     steps:
       - checkout:
       - run: printenv
